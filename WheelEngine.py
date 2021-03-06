@@ -1,3 +1,5 @@
+from ArgTools import ArgParser
+
 # WheelEngine
 class WheelEngine: 
 
@@ -24,10 +26,26 @@ class WheelEngine:
 
 	maxIndex=[len(layer1)-1, len(layer2)-1, len(layer3)-1, len(layer4)-1]
 	currIndex=[0,0,0,0]
+	
+	bInitOK = False
 
 	def __init__(self, args): 
 		# startupcode 
-		x=42
+		if (self.parseArgs(args)):
+			self.bInitOK = True
+		else:
+			print("WheelEngine: Init failed to parse arguments.")
+		
+		
+	def parseArgs(self, args):
+		# return true if args are valid 
+		bRval = True 		
+		ap = ArgParser(args)
+		
+		# TODO: Add required command line argument tests here. 
+		
+		return bRval
+
 
 	def go(self): 
 		# run this 
@@ -53,6 +71,21 @@ class WheelEngine:
 				bDone = True 
 
 
+	def testIndexes(self): 
+		# walk the indexes to see if they are incrementing correctly 
+		print("max indexes: ", end = " ")
+		print(self.maxIndex)
+		
+		for x in range(40): 
+			self.showCurrentIndexes() 
+			self.updateIndexes() 
+		
+		
+	def showCurrentIndexes(self): 
+		# output the current indexes array values 
+		print(self.currIndex) 
+		
+		
 	def updateIndexes(self): 
 		# increment the indexes like an odometer 
 
