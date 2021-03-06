@@ -101,6 +101,7 @@ class WheelEngine:
 				if (x>0):
 					self.currIndex[x-1] += 1
 					self.currIndex[x] = 0
+					break
 				else: 
 					#nothing to the left to increment, reset to all zeros
 					self.currIndex=[0,0,0,0]
