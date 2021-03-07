@@ -4,5 +4,4 @@ import sys
 from WheelEngine import WheelEngine
 
 engine = WheelEngine(sys.argv)
-#engine.go()
-engine.testIndexes()
+engine.go()
